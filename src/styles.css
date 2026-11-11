@@ -110,6 +110,24 @@ body {
   transform: scale(0.97);
 }
 
+/* ── Due date input ── */
+.due-date-input {
+  padding: 10px 12px;
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  font-size: 0.9rem;
+  font-family: inherit;
+  color: var(--color-text);
+  background: var(--color-card);
+  outline: none;
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.due-date-input:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+}
+
 /* ── Error message ── */
 .error-msg {
   color: var(--color-danger);
@@ -168,6 +186,28 @@ body {
 .task-item.completed .task-text {
   text-decoration: line-through;
   color: var(--color-completed);
+}
+
+/* ── Due date label & overdue highlight ── */
+.due-date {
+  font-size: 0.75rem;
+  color: var(--color-muted);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.task-item.overdue {
+  background: #fef2f2;
+  box-shadow: inset 3px 0 0 var(--color-danger);
+}
+
+.task-item.overdue .task-text,
+.task-item.overdue .due-date {
+  color: var(--color-danger);
+}
+
+.task-item.overdue .due-date {
+  font-weight: 600;
 }
 
 /* ── Checkbox ── */
@@ -304,6 +344,18 @@ body {
 
 /* ── Responsive ── */
 @media (max-width: 480px) {
+  .add-task-form {
+    flex-wrap: wrap;
+  }
+
+  .task-input {
+    flex-basis: 100%;
+  }
+
+  .due-date-input {
+    flex: 1;
+  }
+
   .app-header h1 {
     font-size: 1.8rem;
   }
